@@ -1,4 +1,5 @@
 FROM python:2
+LABEL maintainer="doshisohesh@gmail.com"
 ENV PYTHONUNBUFFRED 1
 RUN mkdir /code
 WORKDIR /code
