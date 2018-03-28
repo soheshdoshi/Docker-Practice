@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+ db:
+  image: mysql
+  environment:
+    MYSQL_HOST: db
+    MYSQL_ROOT_PASSWORD: P@ssw0rd
+    MYSQL_DATABASE: django1
+    MYSQL_USER: root
+    MYSQL_PASSWORD: P@ssw0rd
+ web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    links:
+      - db:db
