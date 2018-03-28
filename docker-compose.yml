@@ -11,6 +11,14 @@ services:
     MYSQL_DATABASE: django1
     MYSQL_USER: sohesh
     MYSQL_PASSWORD: P@ssw0rd
+ redis:
+   image: redis
+   environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+   ports:
+      - '6379:6379'
+   volumes:
+      - /home/rushi/my-docker-volume/redis:/bitnami/redis
  web:
     build: .
     command: bash -c  "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
@@ -20,3 +28,4 @@ services:
       - "8000:8000"
     links:
       - db:db
+      - redis:redis

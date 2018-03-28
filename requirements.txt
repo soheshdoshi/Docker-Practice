@@ -1,5 +1,6 @@
 ConfigParser
 MySQL-python
 Django
+redis
 
 
